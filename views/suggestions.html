@@ -1,0 +1,30 @@
+<div class="container my-4" ng-controller="SuggestionsController as vm">
+
+    <div class="card shadow mb-4">
+      <div class="card-body bg-dark text-white text-center">
+        <h3>🤖 Smart Task Suggestions</h3>
+        <small>AI-inspired productivity insights</small>
+      </div>
+    </div>
+  
+    <a href="#!/analytics" class="btn btn-outline-secondary mb-3">
+      ← Back to Analytics
+    </a>
+  
+    <div class="list-group">
+  
+      <div class="list-group-item"
+           ng-repeat="suggestion in vm.suggestions">
+        <strong>{{ suggestion.title }}</strong>
+        <p class="mb-0 text-muted">{{ suggestion.message }}</p>
+      </div>
+  
+      <div class="list-group-item text-center text-muted"
+           ng-if="vm.suggestions.length === 0">
+        🎉 You’re doing great! No suggestions needed.
+      </div>
+  
+    </div>
+  
+  </div>
+  

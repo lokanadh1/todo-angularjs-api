@@ -1,0 +1,19 @@
+body {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.analytics-header {
+  background: linear-gradient(135deg, #1f2933, #111827);
+}
+
+.tag-btn {
+  cursor: pointer;
+}
+
+.card h3 {
+  font-weight: 600;
+}
+
+table th {
+  white-space: nowrap;
+}

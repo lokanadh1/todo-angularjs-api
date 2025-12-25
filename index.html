@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo Manager</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AngularJS (REQUIRED) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-route.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-light">
+
+  <!-- ANGULAR ROUTER OUTLET -->
+  <div ng-view></div>
+
+  <!-- APP -->
+  <script src="app.js"></script>
+
+  <!-- SERVICES -->
+  <script src="services/apiService.js"></script>
+
+  <!-- CONTROLLERS -->
+  <script src="controllers/todoController.js"></script>
+  <script src="controllers/analyticsController.js"></script>
+  <script src="controllers/suggestionsController.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<div class="container my-4" ng-controller="AnalyticsController as vm">
+
+    <!-- HEADER -->
+    <div class="card shadow analytics-header mb-4">
+      <div class="card-body text-center text-white">
+        <h3 class="mb-1">📊 Task Analytics Dashboard</h3>
+        <small>Priority-weighted productivity insights</small>
+      </div>
+    </div>
+  
+    <!-- ROUTER BACK LINK -->
+    <a href="#!/" class="btn btn-outline-secondary mb-4">
+      ← Back to Tasks
+    </a>
+
+    <a href="#!/suggestions" class="btn btn-primary mb-4">
+        🤖 View Smart Suggestions
+      </a>      
+  
+    <!-- KPI CARDS -->
+    <div class="row mb-4">
+      <div class="col-md-3" ng-repeat="kpi in vm.kpis">
+        <div class="card shadow-sm text-center">
+          <div class="card-body">
+            <h6 class="text-muted">{{ kpi.label }}</h6>
+            <h3>{{ kpi.value }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- CHARTS -->
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card shadow-sm p-3">
+          <h6 class="text-center mb-3">Completion Rate</h6>
+          <canvas id="completionChart"></canvas>
+        </div>
+      </div>
+  
+      <div class="col-md-7">
+        <div class="card shadow-sm p-3">
+          <h6 class="text-center mb-3">Tag Effort Weightage</h6>
+          <canvas id="tagChart"></canvas>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  

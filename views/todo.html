@@ -1,0 +1,162 @@
+<div class="container mt-4" ng-controller="TodoController as vm">
+
+    <!-- HEADER -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-body bg-primary text-white text-center rounded">
+        <h3 class="mb-0">📝 ToDo Task Manager</h3>
+        <small>Priority • Tags • Analytics</small>
+      </div>
+    </div>
+  
+    <!-- ADD TASK -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="mb-3">Add New Task</h5>
+  
+        <div class="row g-2">
+          <div class="col-md-3">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Task Title"
+                   ng-model="vm.newTask.title">
+          </div>
+  
+          <div class="col-md-3">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Description"
+                   ng-model="vm.newTask.description">
+          </div>
+  
+          <div class="col-md-2">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Tags (Work,Health)"
+                   ng-model="vm.newTask.tags">
+          </div>
+  
+          <div class="col-md-2">
+            <select class="form-select"
+                    ng-model="vm.newTask.priority">
+              <option value="">Priority</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+  
+          <div class="col-md-2 d-grid">
+            <button class="btn btn-success"
+                    ng-click="vm.addTask()">
+              Add Task
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- FILTERS -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <button class="btn btn-outline-primary btn-sm me-1"
+                ng-click="vm.setFilter('all')">
+          All
+        </button>
+        <button class="btn btn-outline-success btn-sm me-1"
+                ng-click="vm.setFilter('active')">
+          Active
+        </button>
+        <button class="btn btn-outline-secondary btn-sm"
+                ng-click="vm.setFilter('completed')">
+          Completed
+        </button>
+      </div>
+  
+      <!-- ROUTER LINK -->
+      <a href="#!/analytics" class="btn btn-dark btn-sm">
+        📊 View Analytics
+      </a>
+    </div>
+  
+    <!-- TAG FILTER -->
+    <div class="mb-3">
+      <span class="badge bg-secondary tag-btn me-1"
+            ng-repeat="tag in vm.allTags"
+            ng-click="vm.filterByTag(tag)">
+        {{ tag }}
+      </span>
+  
+      <span class="badge bg-danger tag-btn"
+            ng-click="vm.clearTag()">
+        Clear
+      </span>
+    </div>
+  
+    <!-- TASK TABLE -->
+    <div class="card shadow-sm">
+      <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+          <thead class="table-dark">
+            <tr>
+              <th>Done</th>
+              <th>Task</th>
+              <th>Priority</th>
+              <th>Tags</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr ng-repeat="task in vm.tasks | filter:vm.taskFilter">
+              <td class="text-center">
+                <input type="checkbox"
+                       ng-model="task.completed"
+                       ng-change="vm.updateTask(task)">
+              </td>
+  
+              <td ng-class="{
+                    'text-decoration-line-through text-muted': task.completed
+                  }">
+                <strong>{{ task.title }}</strong><br>
+                <small>{{ task.description }}</small>
+              </td>
+  
+              <td>
+                <span class="badge"
+                      ng-class="{
+                        'bg-danger': task.priority === 'High',
+                        'bg-warning text-dark': task.priority === 'Medium',
+                        'bg-success': task.priority === 'Low'
+                      }">
+                  {{ task.priority }}
+                </span>
+              </td>
+  
+              <td>
+                <span class="badge bg-primary me-1"
+                      ng-repeat="t in task.tagList">
+                  {{ t }}
+                </span>
+              </td>
+  
+              <td>
+                <button class="btn btn-sm btn-danger"
+                        ng-click="vm.deleteTask(task.id)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+  
+            <tr ng-if="vm.tasks.length === 0">
+              <td colspan="5"
+                  class="text-center text-muted">
+                No tasks available
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  </div>
+  
